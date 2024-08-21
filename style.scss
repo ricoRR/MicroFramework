@@ -1,0 +1,80 @@
+@use "sass:math";
+
+$grid-columns: 12;
+
+body {
+    background-color: greenyellow;
+}
+
+.container {
+    width: 100%;
+    margin: 0 auto;
+    padding: 0 20px;
+    box-sizing: border-box;
+}
+
+.container-fluid {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+}
+
+.row {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+@for $n from 1 through 4 {
+    $per: calc($n * 10%);
+    .img-rounded-#{$n} {
+        border-radius: $per;
+        border: solid;
+    }
+}
+
+.img-responsive {
+    display: flex;
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: auto;
+}
+
+.img-circle {
+    border-radius: 50%;
+    border: solid;
+}
+
+.img-thumbnail {
+    border: 2px solid purple; 
+    border-radius: 4px;  
+    padding: 5px; 
+    width: 10%;
+}
+
+@for $n from 1 through 3 {
+    $blur: calc($n * 8px);
+    .img-blur-#{$n} {
+        filter:blur($blur);
+    }
+}
+
+@for $n from 1 through $grid-columns {
+    $width: percentage(calc($n / $grid-columns));
+    .col-md-#{$n} {
+        flex-basis: $width;
+        max-width: $width;
+    }
+}
+
+.btn{
+    background-color: lightpink;
+
+    &:active {
+        background-color: green;
+    }
+
+    &:disabled {
+        background-color: blue;
+    }
+}
